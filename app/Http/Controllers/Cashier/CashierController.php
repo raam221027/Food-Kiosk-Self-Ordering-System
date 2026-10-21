@@ -44,7 +44,7 @@ class CashierController extends Controller
 
     public function order_payment(Request $request, $id)
     {
-        $order = Order::find($id);
+        $order = Order::findOrFail($id);
         $order->status = 'Paid';
         $order->updated_at = now();
         $order->save();
@@ -52,8 +52,9 @@ class CashierController extends Controller
         $payments = new Payment();
         $payments->order_id	= $order->id;
         $payments->cashier_id = Auth::user()->id;
-        $payments->amount = $request->amount;
-        $payments->change = $request->change;
+        // GCash payments have no "amount tendered" field, so fall back to the order total
+        $payments->amount = $request->filled('amount') ? $request->amount : $order->total_amount;
+        $payments->change = $request->filled('change') ? $request->change : 0;
         $payments->ref_num = $request->ref_num;
         $payments->save();
 
@@ -119,26 +120,29 @@ class CashierController extends Controller
     {
         // Get today's date
         $today = now()->toDateString();
-    
-        // Fetch done orders for today
-        $doneOrders = Order::where('status', 'Done')
+
+        // Every order paid today, whether or not the kitchen has marked it Done yet
+        $customerOrders = Order::revenue()
             ->whereDate('created_at', $today)
+            ->latest()
             ->get();
-    
-            $totalCash = Order::where('payment_method', 'Cash')
-            ->where('status', 'Done')
+
+        $totalCash = Order::revenue()
+            ->where('payment_method', 'Cash')
             ->whereDate('created_at', $today)
             ->sum('total_amount');
-    
-        $totalGCash = Order::where('payment_method', 'GCash')
-            ->where('status', 'Done')
+
+        $totalGCash = Order::revenue()
+            ->where('payment_method', 'Gcash')
             ->whereDate('created_at', $today)
             ->sum('total_amount');
-    
-        // Calculate the total sales for today (sum of Cash and GCash)
-        $totalSales = $totalCash + $totalGCash;
-    
-        // Create a new DailySalesReport record
+
+        // Total every payment method, so a method other than Cash/GCash is never dropped
+        $totalSales = Order::revenue()
+            ->whereDate('created_at', $today)
+            ->sum('total_amount');
+
+        // Snapshot today's figures for the admin report
         DailySalesReport::updateOrCreate(
             ['report_date' => $today],
             [
@@ -147,10 +151,7 @@ class CashierController extends Controller
                 'total_sales' => $totalSales,
             ]
         );
-    
-        // Fetch customer orders for today with a 'paid' or 'done' status
-        $customerOrders = ($doneOrders);
-    
+
         return view('cashier.daily_sales_report', [
             'totalCash' => $totalCash,
             'totalGCash' => $totalGCash,

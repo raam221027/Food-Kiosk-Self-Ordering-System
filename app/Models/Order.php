@@ -15,6 +15,16 @@ class Order extends Model
        
     ];
     
+    /**
+     * Orders whose money has actually been collected, i.e. the basis of every sales figure.
+     * An order goes Unpaid -> Paid (cashier takes payment) -> Done (kitchen finishes it),
+     * so revenue is earned at 'Paid' and must not wait for the kitchen.
+     */
+    public function scopeRevenue($query)
+    {
+        return $query->whereIn('status', ['Paid', 'Done']);
+    }
+
     public function items()
     {
        return $this->belongsToMany(Product::class, 'order_items')->withPivot('quantity');

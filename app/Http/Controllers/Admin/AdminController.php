@@ -207,73 +207,77 @@ class AdminController extends Controller
      */
     public function adminDailySalesReport(Request $request)
     {
+        $months = [
+            'january' => 1, 'february' => 2, 'march' => 3, 'april' => 4,
+            'may' => 5, 'june' => 6, 'july' => 7, 'august' => 8,
+            'september' => 9, 'october' => 10, 'november' => 11, 'december' => 12,
+        ];
+
         $dateFilter = $request->input('date_filter', 'this_month');
-        $currentDate = now()->toDateString();
+        $year = (int) $request->input('year', now()->year);
 
-        $query = DailySalesReport::query();
-
-        if ($dateFilter == 'this_month') {
-            $query->whereMonth('report_date', Carbon::now()->month);
-        } elseif ($dateFilter == 'today') {
-            $query->whereDate('report_date', $currentDate);
+        // Resolve the filter to an explicit date range. A month on its own is ambiguous:
+        // filtering on the month number alone would mix that month from every year together.
+        if ($dateFilter == 'today') {
+            $start = now()->startOfDay();
+            $end = now()->endOfDay();
+        } elseif (isset($months[$dateFilter])) {
+            $start = Carbon::create($year, $months[$dateFilter], 1)->startOfMonth();
+            $end = $start->copy()->endOfMonth();
         } else {
-            // Handle month filters by converting to a number
-            $monthNumber = Carbon::parse($dateFilter)->month;
-            $query->whereMonth('report_date', $monthNumber);
+            $dateFilter = 'this_month';
+            $start = Carbon::create($year, now()->month, 1)->startOfMonth();
+            $end = $start->copy()->endOfMonth();
         }
 
-        // Calculate total cash, gcash, and total sales
-        $totalCash = $query->sum('total_cash') ?: 0;
-        $totalGCash = $query->sum('total_gcash') ?: 0;
-        $totalSales = $query->sum('total_sales') ?: 0;
+        // Build the report from the orders table, which is the source of truth.
+        // daily_sales_reports is only a snapshot and has no row for any day nobody
+        // happened to open a report on, so reading it directly loses whole months of sales.
+        $dailyTotals = Order::revenue()
+            ->whereBetween('created_at', [$start, $end])
+            ->selectRaw('DATE(created_at) as report_date')
+            ->selectRaw("SUM(CASE WHEN payment_method = 'Cash' THEN total_amount ELSE 0 END) as total_cash")
+            ->selectRaw("SUM(CASE WHEN payment_method = 'Gcash' THEN total_amount ELSE 0 END) as total_gcash")
+            ->selectRaw('SUM(total_amount) as total_sales')
+            ->groupBy('report_date')
+            ->orderBy('report_date')
+            ->get();
 
-        // If filtering for today, update or create the DailySalesReport entry based on the Order model
-        if ($dateFilter == 'today') {
-            $orderTotals = Order::where('status', 'Done')
-                ->whereDate('created_at', $currentDate)
-                ->selectRaw('SUM(CASE WHEN payment_method = "Cash" THEN total_amount ELSE 0 END) as total_cash')
-                ->selectRaw('SUM(CASE WHEN payment_method = "GCash" THEN total_amount ELSE 0 END) as total_gcash')
-                ->first();
-
-            $totalCash = $orderTotals->total_cash ?: 0;
-            $totalGCash = $orderTotals->total_gcash ?: 0;
-            $totalSales = $totalCash + $totalGCash;
-
-            // Update or create a new DailySalesReport entry for today
-            DailySalesReport::updateOrCreate(
-                ['report_date' => $currentDate],
+        // Bring the stored snapshots back in step with the figures just calculated
+        $reports = $dailyTotals->map(function ($totals) {
+            return DailySalesReport::updateOrCreate(
+                ['report_date' => $totals->report_date],
                 [
-                    'total_cash' => $totalCash,
-                    'total_gcash' => $totalGCash,
-                    'total_sales' => $totalSales,
+                    'total_cash' => $totals->total_cash,
+                    'total_gcash' => $totals->total_gcash,
+                    'total_sales' => $totals->total_sales,
                 ]
             );
-        }
+        });
 
-        // Fetch reports for the view
-        $reports = $query->get();
+        // Years that actually have sales, so the filter cannot select an empty year
+        $years = Order::revenue()
+            ->selectRaw('YEAR(created_at) as year')
+            ->distinct()
+            ->pluck('year')
+            ->push(now()->year)
+            ->unique()
+            ->sortDesc()
+            ->values();
 
-        // Calculate total collectables (cash) and receivables (gcash) for the whole month
         $totalCollectablesForMonth = $reports->sum('total_cash');
         $totalReceivablesForMonth = $reports->sum('total_gcash');
-
-        // Calculate total sales for the whole month
         $totalSalesForMonth = $reports->sum('total_sales');
-
-        // Calculate total sales for today
-        $totalSalesForToday = ($dateFilter == 'today') ? $totalSales : 0;
 
         // Display the results
         return view('admin.daily_sales_report', compact(
             'reports',
             'dateFilter',
+            'year',
+            'years',
             'totalSalesForMonth',
-            'totalSalesForToday',
             'totalCollectablesForMonth',
-            'totalReceivablesForMonth',
-            'totalCash',
-            'totalGCash',
-            'totalSales'
+            'totalReceivablesForMonth'
         ));
     }
 }

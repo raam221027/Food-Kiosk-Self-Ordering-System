@@ -18,5 +18,10 @@ class DailySalesReport extends Model
         'total_sales',
     ];
 
+    // Cast report_date so views can format it as a date instead of a raw string
+    protected $casts = [
+        'report_date' => 'date',
+    ];
+
     // Define any other model-specific methods, relationships, or properties here
 }
