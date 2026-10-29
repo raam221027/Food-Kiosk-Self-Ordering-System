@@ -48,14 +48,17 @@ class CustomizedProductController extends Controller
     $photo = $request->file('photo');
 
     // Move the uploaded file to the 'public/product_photos' directory
-    $photoPath = $photo->move(public_path('product_photos'), $productCode . '.' . $photo->getClientOriginalExtension());
+    // Use the extension detected from the file contents, never the client-supplied one
+    $photoName = $productCode . '.' . $photo->guessExtension();
+
+    $photoPath = $photo->move(public_path('product_photos'), $photoName);
 
     $customizedProduct = new CustomizedProduct([
         'name' => $request->get('name'),
         'category_id' => $request->get('category'),
         'product_code' => $productCode,
         'description' => $request->get('description'),
-        'photo' => 'product_photos/' . $productCode . '.' . $photo->getClientOriginalExtension(),
+        'photo' => 'product_photos/' . $photoName,
     ]);
 
     $customizedProduct->save();
@@ -92,7 +95,7 @@ class CustomizedProductController extends Controller
     {
         $customizedProduct = CustomizedProduct::findOrFail($id);
 
-        $customizedProduct->update($request->all());
+        $customizedProduct->update($request->only(['name', 'price', 'description']));
 
         return redirect()->route('customized_products.index')->with('success', 'Customized product updated successfully');
     }

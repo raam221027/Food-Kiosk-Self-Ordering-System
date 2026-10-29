@@ -428,14 +428,6 @@ CREATE TABLE `sessions` (
 -- Dumping data for table `sessions`
 --
 
-INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('F3EMcbE7zKGg3ImtHakjPbuy9ighN5av4xjHwSyV', 41, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiVE9ybW9MSll6M3o1azhVSUMwNnM0czVBYUZiOUUyRTJQYTRSV3hzMyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXNoaWVyL2Rhc2hib2FyZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQxO30=', 1699085983),
-('fmEeMYQmKamAHmfFhxPLLHPnhcOE45sYl3b0kzR3', 27, '127.0.0.1', 'Mozilla/5.0 (iPad; CPU OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/87.0.4280.77 Mobile/15E148 Safari/604.1', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNXJNZ2t6S0N4OE5zZ0JSTXY1WDJwT2kzRFZLSloyRENaVVJOanZ4VyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sYW5kaW5nLXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjM3OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGFzaGJvYXJkIjt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6Mjc7fQ==', 1698820747),
-('FUyS5v8cLBKxJ2CLG0o6hSWZnvKeAHICpqnsNwEl', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiUnF1YmF6SVpFN25uWTQ5NExZZEtrY244NkV3cDNTQWdyWG5tYXJPdyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sYW5kaW5nLXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1698938585),
-('kLXm9egbKp18X078hTRTvLPUkblXBapqqURTobGx', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWURxS2M2SWxMeDNEWGprdDNvWmZJMDk4Mk1uSWswWEFDWkhNMDVLcCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9jYXNoaWVyL2Rhc2hib2FyZCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1698819647),
-('PFzZrafAPpHQsHBvGigmeWG24YfdpmiglAmOA8la', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiemxvd293YTMzQ0FWMFNvc2F6eGRSYVhBdTQ5djgzRUd4R25kYkNrRSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sYW5kaW5nLXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1698907195),
-('toO2DvaM390CDdLdc3Z7NTySJZj7RpcTPoLG0a3j', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoicWpIcWRmRWI1aU8wOUR4TUNocUxiME1lcHJoeFhrZmRzT1JET2JLVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sYW5kaW5nLXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1699082244),
-('yn26Awqy6o2WmcLEjmDDtyRhMdTS6g3SylnSBhXK', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiY09sUk83c2NhUjZ1cTFrYVU4VkpFeGM5WjJ3U0MxcmNNeGx3aHBzMCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sYW5kaW5nLXBhZ2UiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX19', 1698902019);
 
 -- --------------------------------------------------------
 
@@ -461,12 +453,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `is_disabled`, `role`) VALUES
-(27, 'Admin', 'admin@admin.com', NULL, '$2y$10$bSYzP6m2NrMwjMQiFmMzIu2oggj88q26n6VEBzvbMiO99nGmCMmuq', NULL, '2023-07-28 00:29:31', '2023-08-07 04:48:02', 0, 'Admin'),
-(37, 'kokok', 'kokok@gmail.com', NULL, '$2y$10$PqVeZorcpxrzmKyGCXGP3uPRrtWZJXbLfL4OdtfpAq7tRLIDDS6Zu', NULL, '2023-07-28 10:32:15', '2023-08-07 04:51:04', 0, 'Kitchen'),
-(41, 'wawak', 'wawak@gmail.com', NULL, '$2y$10$m7BhBH4uv0ueEQshkOalUuvp1nceM1OzVcGYoOcOdybv44dCnQRN2', NULL, '2023-08-13 13:04:10', '2023-08-13 13:04:10', 0, 'Cashier'),
-(46, 'kakak', 'kakak@gmail.com', NULL, '$2y$10$QR1akGHPVM3UaGrDE7qHJutJ1/UI9knrUIvXaTk/d9.1JMulsOR3q', NULL, '2023-08-15 08:31:23', '2023-09-18 19:55:10', 0, 'Cashier'),
-(47, 'omsim', 'omsim@gmail.com', NULL, '$2y$10$Y9Y9ez2YRV76e.XrJSUcf.I15Dd/TaED6cfzhHbybirhvOErWJVNa', NULL, '2023-09-19 09:28:04', '2023-10-20 07:04:34', 0, 'Kitchen'),
-(48, 'kitchen1', 'kitchen@gmail.com', NULL, '$2y$10$.rmlUUlr4h1Wasec8rEMLelq3EN3XAa.V2jIqBsmzmyNn2qAk8brS', NULL, '2023-10-13 08:49:09', '2023-10-13 08:49:09', 0, 'Kitchen');
+(27, 'Demo Admin', 'admin@demo.com', NULL, '$2y$10$tzv/WJuLSUNAtEbWiejvsu3mPdb.li3CoC7J2cxie7HmRzbUfcaw6', NULL, '2023-07-28 00:29:31', '2023-07-28 00:29:31', 0, 'Admin'),
+(41, 'Demo Cashier', 'cashier@demo.com', NULL, '$2y$10$tzv/WJuLSUNAtEbWiejvsu3mPdb.li3CoC7J2cxie7HmRzbUfcaw6', NULL, '2023-08-13 13:04:10', '2023-08-13 13:04:10', 0, 'Cashier'),
+(48, 'Demo Kitchen', 'kitchen@demo.com', NULL, '$2y$10$tzv/WJuLSUNAtEbWiejvsu3mPdb.li3CoC7J2cxie7HmRzbUfcaw6', NULL, '2023-10-13 08:49:09', '2023-10-13 08:49:09', 0, 'Kitchen');
 
 --
 -- Indexes for dumped tables

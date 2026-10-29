@@ -132,7 +132,7 @@ return [
     */
 
     'features' => [
-        Features::registration(),
+        // Features::registration(), // disabled: staff accounts are created by the Admin
         Features::resetPasswords(),
         // Features::emailVerification(),
         Features::updateProfileInformation(),

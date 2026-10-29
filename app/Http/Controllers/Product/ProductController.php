@@ -52,14 +52,17 @@ public function store(Request $request)
     $photo = $request->file('photo');
 
     
-    $photoPath = $photo->move(public_path('product_photos'), $productCode . '.' . $photo->getClientOriginalExtension());
+    // Use the extension detected from the file contents, never the client-supplied one
+    $photoName = $productCode . '.' . $photo->guessExtension();
+
+    $photoPath = $photo->move(public_path('product_photos'), $photoName);
 
     $product = new Product([
         'title' => $request->get('title'),
         'price' => $request->get('price'),
         'product_code' => $productCode,
         'description' => $request->get('description'),
-        'photo' => 'product_photos/' . $productCode . '.' . $photo->getClientOriginalExtension(),
+        'photo' => 'product_photos/' . $photoName,
     ]);
 
     $product->save();
@@ -96,7 +99,7 @@ public function store(Request $request)
     {
         $product = Product::findOrFail($id);
 
-        $product->update($request->all());
+        $product->update($request->only(['title', 'price', 'description']));
 
         return redirect()->route('products')->with('success', 'Product updated successfully');
     }
