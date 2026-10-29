@@ -1,0 +1,410 @@
+/*
+ * Responsive overrides for every layout.
+ * Loaded last so it only changes what the original templates get wrong on
+ * small screens; desktop (>= 992px) is left as designed.
+ *
+ * Staff layouts (admin / cashier / kitchen): .rs-staff-sidebar + #content-wrapper header#navbar
+ * Customer layouts: body > header#navbar, customer `nav`, #v-pills-tab
+ */
+
+/* ---------- Everywhere ---------- */
+img,
+video,
+canvas {
+    max-width: 100%;
+}
+
+/* Wrapper added around every table by responsive.js; it only scrolls below desktop */
+.rs-table-scroll {
+    width: 100%;
+    max-width: 100%;
+}
+
+.rs-nav-toggle,
+.rs-nav-backdrop {
+    display: none;
+}
+
+/* ---------- Tablet and below ---------- */
+@media (max-width: 991.98px) {
+    html,
+    body {
+        overflow-x: hidden;
+    }
+
+    .rs-table-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Customer header (lightBUTfull banner) */
+    body > header#navbar {
+        margin-left: 0 !important;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        height: 70px !important;
+        background-size: cover !important;
+        background-position: center;
+    }
+
+    body > header#navbar .header-text h1 {
+        margin: 0 !important;
+        font-size: 1.9rem !important;
+    }
+
+    body > header#navbar .header-text h1 span {
+        font-size: 1.9rem;
+    }
+
+    body > header#navbar .header-text img {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Staff pages offset their content with inline margin-left: 16-23% to clear
+       the desktop sidebar; below desktop that only pushes content off screen */
+    #content-wrapper [style*="margin-left"] {
+        margin-left: 0 !important;
+    }
+
+    #content-wrapper [style*="width:8"],
+    #content-wrapper [style*="width: 8"],
+    #content-wrapper [style*="width:9"],
+    #content-wrapper [style*="width: 9"],
+    #content-wrapper [style*="width: 7"],
+    #content-wrapper [style*="width:7"] {
+        width: 100% !important;
+    }
+
+    #content-wrapper .pagination {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* Admin dashboard cards */
+    .custom-container {
+        margin-left: 0 !important;
+        padding: 10px !important;
+    }
+
+    .custom-container .col-lg-4 {
+        position: static !important;
+        -webkit-transform: none !important;
+        transform: none !important;
+        margin: 0 0 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100%;
+    }
+
+    .custom-container .col-lg-6,
+    .custom-container .col-lg-8 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100%;
+    }
+
+    /* Customer menu cards have inline width: 18rem; margin-left: 100px; height: 40vh */
+    #v-pills-tabContent .card {
+        width: auto !important;
+        margin-left: 0 !important;
+        height: auto !important;
+    }
+
+    #v-pills-tabContent .card img {
+        height: 140px !important;
+        object-fit: cover;
+    }
+
+    /* Customer menu page: left tab list becomes a bottom tab bar */
+    .menu-layout {
+        margin-left: 0 !important;
+        display: block !important;
+        padding-bottom: 80px;
+    }
+
+    #v-pills-tab {
+        top: auto !important;
+        bottom: 0;
+        width: 100% !important;
+        height: auto !important;
+        flex-direction: row !important;
+        z-index: 1040;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, .12);
+        margin: 0 !important;
+    }
+
+    #v-pills-tab .nav-link {
+        flex: 1 1 0;
+        margin: 0 !important;
+        padding: 12px 8px;
+        min-height: 56px;
+        border-radius: 0;
+        text-align: center;
+    }
+
+    #v-pills-tab .nav-link i {
+        margin-right: 6px;
+    }
+
+    /* Cart drawer: full width on small screens */
+    .offcanvas.offcanvas-end.w-50 {
+        width: 100% !important;
+    }
+
+    /* Make Your Own Salad page */
+    .container {
+        width: auto !important;
+        max-width: 100% !important;
+    }
+
+    .list {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+        gap: 16px !important;
+        margin: 0 !important;
+        padding: 0 4px;
+    }
+
+    .list .item {
+        width: auto !important;
+        height: auto !important;
+        min-height: 0;
+        letter-spacing: 1px !important;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, .18) !important;
+    }
+
+    .list .item img {
+        height: 120px !important;
+        width: 120px !important;
+    }
+
+    .list .item button {
+        width: 100% !important;
+        max-width: 220px;
+        font-size: 16px !important;
+    }
+
+    .cart {
+        width: 100% !important;
+        max-width: 420px;
+        left: 100% !important;
+        margin-left: 0 !important;
+        overflow-y: auto;
+    }
+
+    .active .cart {
+        left: auto !important;
+        right: 0;
+    }
+
+    .active .container {
+        transform: none !important;
+    }
+
+    .cart h1 {
+        margin-left: 0 !important;
+        padding: 0 16px !important;
+    }
+
+    /* Order type / payment pickers inside modals */
+    .order-options {
+        gap: 16px !important;
+        flex-wrap: wrap;
+    }
+
+    .order-type-button {
+        margin-right: 0 !important;
+    }
+}
+
+/* ---------- Tablets and phones: navigation ---------- */
+/* The staff sidebar is position: fixed at every width and the pages clear it
+   with inline margins (reset above), so below desktop it becomes a drawer */
+@media (max-width: 991.98px) {
+    /* Staff sidebar becomes an off-canvas drawer */
+    .rs-staff-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 240px !important;
+        z-index: 1100;
+        overflow-y: auto;
+        background: #0f172b;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+        transition: transform .25s ease;
+    }
+
+    /* Templates also set .sidebar { position: fixed } and, on cashier pages,
+       margin-left: -250px with no way to open it */
+    .rs-staff-sidebar,
+    .rs-staff-sidebar > .sidebar {
+        margin-left: 0 !important;
+    }
+
+    .rs-staff-sidebar > .sidebar {
+        position: static !important;
+        width: 100% !important;
+        min-height: 100%;
+    }
+
+    .rs-staff-sidebar .nav-item .nav-link {
+        text-align: left !important;
+        padding: 14px 20px !important;
+    }
+
+    .rs-staff-sidebar .nav-item .nav-link span {
+        display: inline !important;
+        font-size: .95rem !important;
+    }
+
+    .rs-staff-sidebar .collapse {
+        position: static !important;
+        margin: 0 12px !important;
+    }
+
+    body.rs-nav-open .rs-staff-sidebar {
+        -webkit-transform: none;
+        transform: none;
+    }
+
+    .rs-nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1200;
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, .12);
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .rs-nav-backdrop {
+        position: fixed;
+        inset: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1090;
+        background: rgba(0, 0, 0, .45);
+    }
+
+    body.rs-nav-open .rs-nav-backdrop {
+        display: block;
+    }
+
+    /* Staff header (healTHYself bar) */
+    #content-wrapper header#navbar {
+        margin: 0 !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        height: 64px !important;
+        padding-left: 64px;
+        align-items: center;
+        justify-content: flex-start !important;
+    }
+
+    #content-wrapper header#navbar h1 {
+        margin: 0 !important;
+        font-size: 1.6rem !important;
+        white-space: nowrap;
+    }
+
+    #content-wrapper header#navbar h1 span {
+        font-size: 1.6rem !important;
+    }
+
+    #content-wrapper header#navbar img {
+        margin-left: 0 !important;
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    /* The old topbar list (duplicate Logout link) sits under the fixed header */
+    #content-wrapper .navbar-nav.ml-5 {
+        display: none !important;
+    }
+
+    /* Template search icon does nothing; the profile/logout dropdown stays */
+    #searchDropdown {
+        display: none !important;
+    }
+
+    #content-wrapper {
+        padding-top: 72px;
+    }
+
+    #content-wrapper .container-fluid {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Page headings and action buttons stack */
+    .container-fluid h1.h3,
+    .container-fluid > .d-sm-flex {
+        font-size: 1.4rem;
+    }
+
+    /* Customer pages: Make Your Own Salad side nav becomes a bottom tab bar */
+    body > #wrapper nav,
+    body > nav {
+        top: auto !important;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-around;
+        z-index: 1040;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, .12);
+    }
+
+    body > #wrapper nav a,
+    body > nav a {
+        flex: 1 1 0;
+        margin: 0 !important;
+        padding: 8px 4px !important;
+        font-size: 22px !important;
+        min-height: 56px;
+    }
+
+    body > #wrapper nav a h2,
+    body > nav a h2 {
+        font-size: 12px !important;
+        margin: 2px 0 0;
+    }
+
+    #content-wrapper {
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-bottom: 80px;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+
+    /* Comfortable touch targets */
+    .btn {
+        min-height: 44px;
+    }
+
+    .modal-dialog {
+        margin: .75rem;
+    }
+}

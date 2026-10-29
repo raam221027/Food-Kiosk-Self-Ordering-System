@@ -32,7 +32,9 @@
  
 
 
-    </head>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+</head>
     <body id="page-top">
         
     <!-- Page Wrapper -->

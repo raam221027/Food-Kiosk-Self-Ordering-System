@@ -23,7 +23,9 @@
     <link href="{{ asset('menu.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet">
-    </head>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+</head>
     <body id="page-top">
         
     <!-- Page Wrapper -->

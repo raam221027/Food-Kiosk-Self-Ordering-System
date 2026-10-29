@@ -24,7 +24,9 @@
     
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" />
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
-    </head>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+</head>
     <body id="page-top">
         
     <!-- Page Wrapper -->

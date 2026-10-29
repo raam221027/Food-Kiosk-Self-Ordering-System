@@ -26,12 +26,16 @@
     margin-right: 20px;
   }
 
+  .menu-layout {
+    margin-left: 23%;
+  }
+
   .nav-link span {
     font-size: 14px;
   }
 </style>
 
-<div class="d-flex align-items-start" style="margin-left: 23%;">
+<div class="d-flex align-items-start menu-layout">
   <!-- Vertical Navigation Menu -->
   <div class="nav flex-column nav-pills me-3 bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
     <!-- Menu Tab -->
@@ -54,7 +58,7 @@
         <div class="container ">
             <div class="row">
                 @foreach ($products as $p)
-                <div class="col-md-4">
+                <div class="col-6 col-md-4">
                     <div class="card product mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" data-product-id="{{ $p->id }}" style="width: 18rem; margin-left: 100px; height: 40vh;">
                         <div class="d-flex flex-column bg-image hover-overlay hover-zoom hover-shadow ripple">
                             <img src="{{ asset('' . $p->photo) }}" class="card-img-top mx-auto" alt="..." style="height: 25vh">
@@ -76,7 +80,7 @@
       <div class="container">
         <div class="row">
             @foreach ($salad as $s)
-            <div class="col-md-4">
+            <div class="col-6 col-md-4">
                 <div class="card salad mb-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" data-salad-id="{{ $s->id }}" style="width: 18rem; margin-left: 100px; height: 40vh;">
                     <div class="d-flex flex-column bg-image hover-overlay hover-zoom hover-shadow ripple">
                         <img src="{{ asset('' . $s->photo) }}" class="card-img-top mx-auto" alt="..." style="height: 29vh">

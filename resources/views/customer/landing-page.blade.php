@@ -9,6 +9,11 @@
     scroll-behavior: smooth;
   }
 
+  /* Hero background fills the whole first screen (the navbar overlays it on desktop) */
+  .hero-header {
+    min-height: 100vh;
+  }
+
   /* Style for the fixed navbar */
 .navbar-fixed {
     position: fixed;
@@ -94,10 +99,10 @@
 
 
         <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
+        <div class="container-fluid position-relative p-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
         <a href="" class="navbar-brand p-0">
-            <h1 class="text-white m-0 " > <img src="img/lettuce.png"  class="me-3" style="border-radius:50%;"></i>heal<span style="color: #a4f05c;">THY</span>self</h1>
+            <h1 class="text-white m-0 " > <img src="{{ asset('img/lettuce.png') }}"  class="me-3" style="border-radius:50%;"></i>heal<span style="color: #a4f05c;">THY</span>self</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="fa fa-bars"></span>
@@ -112,16 +117,16 @@
     </nav>
 </div>
 
-<div class="container-xxl py-5 hero-header mb-5">
+<div class="container-fluid hero-header d-flex align-items-center mb-0">
     <div class="container my-5 py-5">
     <div class="row justify-content-center">
-            <div class="col-lg-6 text-center text-lg-start"  style="max-width: 984px; height: 600px;">
+            <div class="col-lg-6 text-center text-lg-start"  style="max-width: 984px;">
                 <h1 class="display-3 text-white animated slideInLeft">Enjoy Our<br>Delicious Meal</h1>
                 <p class="text-white animated slideInLeft mb-4 pb-2">Fresh Vibrant Vegetables, Fruits & Salads 🥗🍅🌱</p>
                 <a href="{{ route('customer.dashboard') }}" class="btn custom-btn py-sm-3 px-sm-5 me-3 animated slideInLeft">Start Order</a>
             </div>
             <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                <img class="img-fluid" src="img/spinning-menu.png" alt="">
+                <img class="img-fluid" src="{{ asset('img/spinning-menu.png') }}" alt="">
             </div>
         </div>
     </div>
@@ -140,7 +145,7 @@
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                            <img src="img/salad1.png" style="width: 75px; height: auto;">
+                            <img src="{{ asset('img/salad1.png') }}" style="width: 75px; height: auto;">
                                 <div class="ps-3">
                                     <small class="text-body"></small>
                                     <h6 class="mt-n1 mb-0">Entrées</h6>
@@ -149,7 +154,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                            <img src="img/smoothie.png" style="width: 75px; height: auto;">
+                            <img src="{{ asset('img/smoothie.png') }}" style="width: 75px; height: auto;">
                                 <div class="ps-3">
                                     <small class="text-body"></small>
                                     <h6 class="mt-n1 mb-0">Smoothie</h6>
@@ -158,7 +163,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill" href="#tab-3">
-                            <img src="img/juices.png" style="width: 75px; height: auto;">
+                            <img src="{{ asset('img/juices.png') }}" style="width: 75px; height: auto;">
                                 <div class="ps-3">
                                     <small class="text-body"></small>
                                     <h6 class="mt-n1 mb-0">Beverages</h6>
@@ -171,7 +176,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/30.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/30.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Roast Beef Sandwich</span>
@@ -183,7 +188,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/34.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/34.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Sandwich</span>
@@ -195,7 +200,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/40.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/40.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Bruschetta Sandwich</span>
@@ -207,7 +212,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/41.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/41.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Cream Cheese Pesto</span>
@@ -219,7 +224,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-5.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Spinach and Mushroom</span>
@@ -231,7 +236,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-6.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>King Kale-Sadillas</span>
@@ -243,7 +248,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-7.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Aglio Olio Shrimps</span>
@@ -255,7 +260,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-8.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Pesto Pasta</span>
@@ -271,7 +276,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-1.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Spinach Carbonara</span>
@@ -283,7 +288,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-2.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Shrimp Marinara</span>
@@ -295,7 +300,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-3.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -307,7 +312,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -319,7 +324,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-5.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-5.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -331,7 +336,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-6.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-6.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -343,7 +348,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-7.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-7.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -355,7 +360,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-8.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-8.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -371,7 +376,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-1.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-1.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -383,7 +388,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-2.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-2.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -395,7 +400,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-3.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-3.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -407,7 +412,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -419,7 +424,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -431,7 +436,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -443,7 +448,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -455,7 +460,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="img/menu-4.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('img/menu-4.jpg') }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>Chicken Burger</span>
@@ -482,20 +487,20 @@
                     <div class="col-lg-6">
                         <div class="row g-5">
                             <div class="col-6 text-start" style="position: relative; ">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/bs-4.jpg">
-                                <img class="wow zoomIn" data-wow-delay="0.1s" src="img/best-seller.png" style="width: 50px;  position: absolute; top: 10px; left: -20px;">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/bs-4.jpg') }}">
+                                <img class="wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/best-seller.png') }}" style="width: 50px;  position: absolute; top: 10px; left: -20px;">
                             </div>
                             <div class="col-6 text-start" style="position: relative;">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/bs-5.jpg" style="margin-top: 25%;">
-                                <img class="wow zoomIn" data-wow-delay="0.1s" src="img/best-seller.png" style="width: 40px;  position: absolute; top: 70px; left: -10px;">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/bs-5.jpg') }}" style="margin-top: 25%;">
+                                <img class="wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/best-seller.png') }}" style="width: 40px;  position: absolute; top: 70px; left: -10px;">
                             </div>
                             <div class="col-6 text-start" style="position: relative;">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="img/bs-6.jpg" style="margin-left: 25%;">
-                                <img class="wow zoomIn" data-wow-delay="0.1s" src="img/best-seller.png" style="width: 40px;  position: absolute; top: 10px; left: 50px;">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/bs-6.jpg') }}" style="margin-left: 25%;">
+                                <img class="wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/best-seller.png') }}" style="width: 40px;  position: absolute; top: 10px; left: 50px;">
                             </div>
                             <div class="col-6 text-start" style="position: relative;">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/bs-7.jpg">
-                                <img class="wow zoomIn" data-wow-delay="0.1s" src="img/best-seller.png" style="width: 50px;  position: absolute; top: 10px; left: -20px;">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/bs-7.jpg') }}">
+                                <img class="wow zoomIn" data-wow-delay="0.1s" src="{{ asset('img/best-seller.png') }}" style="width: 50px;  position: absolute; top: 10px; left: -20px;">
                             </div>
                         </div>
                     </div>
@@ -672,11 +677,11 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('customer_assets/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('customer_assets/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('customer_assets/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('customer_assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('customer_assets/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('lib/counterup/counterup.min.js') }}"></script>
 
     <!-- Template Javascript -->
     <script src="{{ asset('customer_assets/js/main.js') }}"></script>

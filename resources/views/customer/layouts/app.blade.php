@@ -81,7 +81,9 @@
             background: #0f172b;
         }
     </style>
-    </head>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+</head>
 
 
 

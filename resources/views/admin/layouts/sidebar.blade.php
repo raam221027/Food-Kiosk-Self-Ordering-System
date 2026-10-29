@@ -12,7 +12,7 @@
     }
 
 </style>
-<div class="sidebar">
+<div class="sidebar rs-staff-sidebar">
     <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #0f172b; z-index:100;">
             <img src="{{ asset('image/healthyself.png') }}" alt="Logo Image" style="width: 75px; height: 70px; margin-left:5rem; margin-top:1rem; border-radius:50%;">
     <!-- ... Sidebar content ... -->

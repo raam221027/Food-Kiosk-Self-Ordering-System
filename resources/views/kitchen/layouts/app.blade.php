@@ -23,7 +23,9 @@
     <link href="{{ asset('admin_assets/css/sb-admin-2.css') }}" rel="stylesheet">
     <!-- <link href="{{ asset('admin_assets/css/styles.css') }}" rel="stylesheet"> -->
     
-    </head>
+        <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
+</head>
     
     <body id="page-top">
         
@@ -89,7 +91,6 @@
     <script src="{{ asset('admin_assets/js/sb-admin-2.min.js') }}"></script>
     <!-- Page level plugins -->
     <script src="{{ asset('admin_assets/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <script src="{{ asset('kitchen_assets/JS/kitchen.js') }}"></script>
 

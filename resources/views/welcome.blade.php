@@ -14,6 +14,8 @@
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
     <!-- MDB -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet"/>
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/responsive.js') }}" defer></script>
 </head>
 <body class="bg-image">
     <section class="vh-100" style="background-color: #eee;">
@@ -81,7 +83,6 @@
           </div>
         </div>
       </section>
-    <script src="js/script.js"></script>
 <!-- MDB -->
 <script
   type="text/javascript"
