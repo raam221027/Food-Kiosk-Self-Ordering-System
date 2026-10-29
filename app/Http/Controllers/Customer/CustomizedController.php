@@ -22,7 +22,10 @@ class CustomizedController extends Controller
         $customizedProducts = CustomizedProduct::latest()->paginate(9);
         $newOrders = Order::with('items')->latest()->get();
 
-        return view('customer.customized', compact('customizedProducts', 'newOrders'));
+        return view('customer.customized', [
+            'customized_products' => $customizedProducts,
+            'newOrders' => $newOrders,
+        ]);
     }
 
     public function customizedOrderPage()

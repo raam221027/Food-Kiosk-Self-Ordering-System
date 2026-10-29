@@ -1,66 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Food Kiosk Self-Ordering System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A self-ordering food kiosk built with Laravel. Customers place their own orders at the kiosk, the **cashier** takes payment and prints a receipt, the **kitchen** sees the order queue, and the **admin** manages the menu, staff and sales reports.
 
-## About Laravel
+## Live Demo
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**https://&lt;your-app&gt;.up.railway.app** <!-- replace with the Railway URL after deploying -->
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Demo Accounts
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Log in at **`/login`** with any of these accounts:
 
-## Learning Laravel
+| Role | Email | Password | Lands on |
+|---|---|---|---|
+| Admin | `admin@demo.com` | `demo1234` | Admin dashboard (has access to all areas) |
+| Cashier | `cashier@demo.com` | `demo1234` | Cashier dashboard |
+| Kitchen | `kitchen@demo.com` | `demo1234` | Kitchen dashboard |
+| Customer | *no login needed* | | Kiosk at **`/landing-page`** |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> This is a shared demo, so other visitors may have changed the data, and it may be reset from time to time.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Try it in 2 minutes
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. **Customer:** open `/landing-page`, choose **Dine In** or **Take Out**, add items from the menu (or build one with **Make Your Own Salad**) and place the order.
+2. **Cashier:** log in as `cashier@demo.com`, find the new order, take the payment and view the receipt.
+3. **Kitchen:** log in as `kitchen@demo.com` and mark the order as done.
+4. **Admin:** log in as `admin@demo.com` to manage products and staff and to view the daily sales and monthly product-sold reports.
 
-## Laravel Sponsors
+## Features
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**Customer kiosk**
+- Menu browsing and cart
+- "Make Your Own Salad" custom orders
+- Dine In / Take Out order types
 
-### Premium Partners
+**Cashier**
+- Pending order list and payment with change calculation
+- Order receipts
+- Daily sales report
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**Kitchen**
+- Order queue for orders that have been paid
+- Mark orders as done
 
-## Contributing
+**Admin**
+- Product and custom-product management (with photo upload, enable/disable)
+- Staff accounts (Cashier / Kitchen) with enable/disable
+- Daily sales and monthly product-sold reports with charts
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Tech Stack
 
-## Code of Conduct
+- **Backend:** Laravel 10, PHP 8.1+
+- **Database:** MySQL / MariaDB
+- **Frontend:** Blade templates, Chart.js, ApexCharts
+- **Auth & roles:** Laravel Fortify / Jetstream, role-based access via custom middleware, spatie/laravel-permission
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Security
 
-## Security Vulnerabilities
+- Each role can only open its own pages, and the Admin role can open all of them.
+- Uploaded photos are stored with the extension detected from the file's contents, so a script can't be uploaded disguised as an image.
+- Public registration is disabled; the Admin creates staff accounts.
+- Debug mode is off in production, and login attempts are rate-limited.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Run Locally
 
-## License
+Requirements: PHP 8.1+, Composer, MySQL/MariaDB (e.g. XAMPP).
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+git clone https://github.com/raam221027/Food-Kiosk-Self-Ordering-System.git
+cd Food-Kiosk-Self-Ordering-System
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+1. Create a database (e.g. `food_kiosk`) and import `food_kiosk.sql` into it.
+2. Set `DB_DATABASE`, `DB_USERNAME` and `DB_PASSWORD` in `.env`. For local development you can also set `APP_ENV=local` and `APP_DEBUG=true`.
+3. Create the demo accounts and start the server:
+
+```bash
+php artisan db:seed --class=DemoUserSeeder
+php artisan storage:link
+php artisan serve
+```
+
+Then open http://127.0.0.1:8000/landing-page.
+
+Set `DEMO_PASSWORD` in `.env` before seeding if you want a different demo password.

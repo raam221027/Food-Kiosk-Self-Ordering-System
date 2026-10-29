@@ -33,8 +33,6 @@ Route::get('customer/menu', [CustomerController::class, 'showCustomerDashboard']
 Route::post('customer/save-order', [CustomerController::class, 'save_order'])->name('save.order.for.customer');
 Route::get('customized', [CustomizedController::class, 'showCustomized'])->name('customer.customized');
 Route::get('/order/place', [OrderController::class, 'placeOrder'])->name('order.place');
-Route::get('/make-your-own-salad', [CustomizedController::class, 'showMakeYourOwnSalad'])->name('customer.make_your_own_salad');
-Route::get('show-category', [CustomizedController::class, 'showCategory'])->name('customer.category_products');
 
 
 // Admin
